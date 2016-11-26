@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">从网页上面获取东西</string>
+    <string name="click_me">点我哦！</string>
+    <string name="save">保存</string>
+    <string name="hint">输入网址，记得网址前面有 \" http:// \" 哦！</string>
+
+</resources>
