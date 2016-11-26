@@ -21,13 +21,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
-private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = MainActivity.class.getSimpleName();
+    public static String mDefaultEncoding = "UTF-8";
     private Button mClick;
     private EditText mEditText;
     private WebView mWebView;
     private Button mSave;
     private String mUrl;
-    public static String mDefaultEncoding = "UTF-8";
     private String mHtml;
 
 
@@ -81,20 +81,18 @@ private static final String TAG = MainActivity.class.getSimpleName();
         mSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mHtml!=null&&mHtml.length()>0){
+                if (mHtml != null && mHtml.length() > 0) {
                     //获取标题
-                    int head = mHtml.indexOf("<title>")+"<title>".length();
+                    int head = mHtml.indexOf("<title>") + "<title>".length();
                     int tail = mHtml.indexOf("</title>");
-                    String title = mHtml.substring(head,tail);
-                    Log.d(TAG, "Save: title: "+title);
+                    String title = mHtml.substring(head, tail);
+                    Log.d(TAG, "Save: title: " + title);
                     //获取网页上面的第一张图片
-                    int head1 = mHtml.indexOf("img src=\"")+"img src=\"".length();
+                    int head1 = mHtml.indexOf("img src=\"") + "img src=\"".length();
                     String img标签后面的html残余部分 = mHtml.substring(head1);
                     int tail1 = img标签后面的html残余部分.indexOf(".png\"");
-                    String picUrl = img标签后面的html残余部分.substring(0,tail1)+".png";
-                    Log.d(TAG, "Save: picUrl: "+picUrl);
-
-
+                    String picUrl = img标签后面的html残余部分.substring(0, tail1) + ".png";
+                    Log.d(TAG, "Save: picUrl: " + picUrl);
                 }
             }
         });
@@ -144,11 +142,12 @@ private static final String TAG = MainActivity.class.getSimpleName();
 
             return total.toString();
         }
+
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             mHtml = s;
-            Log.d(TAG, "onPostExecute: html: "+ mHtml);
+            Log.d(TAG, "onPostExecute: html: " + mHtml);
         }
     }
 }
